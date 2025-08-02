@@ -124,6 +124,12 @@ All colors MUST be HSL.
     @apply fixed w-6 h-6 bg-primary rounded-full pointer-events-none z-[9999];
     mix-blend-mode: normal;
     transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  .custom-cursor.cursor-transparent {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(1.5);
   }
   
   .spotlight-overlay {
@@ -152,5 +158,34 @@ All colors MUST be HSL.
     background: rgba(16,16,16,0.5);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  
+  .gallery-container {
+    @apply h-screen flex items-center justify-center overflow-hidden;
+    padding-top: 0;
+  }
+  
+  /* Text hover effects with complementary colors */
+  .text-hover-effect {
+    @apply transition-colors duration-300 cursor-none;
+  }
+  
+  .text-hover-effect:hover {
+    color: hsl(var(--accent-hover));
+  }
+  
+  .intro-title:hover {
+    background: linear-gradient(45deg, hsl(180 100% 70%), hsl(240 100% 70%), hsl(300 100% 70%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .nav-link:hover {
+    color: hsl(43 96% 56%);
+  }
+  
+  .email-link:hover {
+    color: hsl(160 84% 39%);
   }
 }

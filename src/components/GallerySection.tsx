@@ -36,7 +36,7 @@ export const GallerySection = () => {
 
   return (
     <div ref={containerRef} className="h-[400vh] relative">
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+      <div className="gallery-container sticky top-0">
         <div 
           ref={galleryRef}
           className="flex gap-[4vw] pl-[5vw] pr-[40vw] transition-transform duration-100 ease-out"
@@ -57,7 +57,7 @@ export const GallerySection = () => {
               }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-primary px-8">
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-primary px-8 text-hover-effect">
                 {item.name}
               </h3>
             </motion.div>

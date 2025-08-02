@@ -10,7 +10,7 @@ export const FooterSection = () => {
       viewport={{ once: true }}
     >
       <motion.h2 
-        className="text-4xl font-bold mb-4"
+        className="text-4xl font-bold mb-4 text-hover-effect"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
@@ -20,7 +20,7 @@ export const FooterSection = () => {
       </motion.h2>
       
       <motion.p 
-        className="text-lg text-muted-foreground mb-8"
+        className="text-lg text-muted-foreground mb-8 text-hover-effect"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
@@ -31,7 +31,7 @@ export const FooterSection = () => {
       
       <motion.a 
         href="mailto:hello@amanguliani.com" 
-        className="text-xl text-primary hover:text-muted-foreground mb-12 inline-block transition-colors duration-300"
+        className="text-xl text-primary email-link mb-12 inline-block transition-colors duration-300"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
@@ -42,7 +42,7 @@ export const FooterSection = () => {
       </motion.a>
       
       <motion.p 
-        className="text-sm text-muted-foreground mt-12"
+        className="text-sm text-muted-foreground mt-12 text-hover-effect"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
