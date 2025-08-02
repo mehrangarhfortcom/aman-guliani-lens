@@ -162,7 +162,7 @@ All colors MUST be HSL.
   
   .gallery-container {
     @apply h-screen flex items-center justify-center overflow-hidden;
-    padding-top: 0;
+    padding-top: 80px;
   }
   
   /* Text hover effects with complementary colors */

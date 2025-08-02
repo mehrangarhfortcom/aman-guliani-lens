@@ -39,7 +39,7 @@ export const GallerySection = () => {
       <div className="gallery-container sticky top-0">
         <div 
           ref={galleryRef}
-          className="flex gap-[4vw] pl-[5vw] pr-[40vw] transition-transform duration-100 ease-out"
+          className="flex gap-[4vw] justify-center items-center transition-transform duration-100 ease-out"
         >
           {galleryItems.map((item, index) => (
             <motion.div
@@ -52,14 +52,22 @@ export const GallerySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ 
-                scale: 1.02,
+                scale: 1.05,
+                y: -10,
                 transition: { duration: 0.3 }
               }}
+              whileTap={{ scale: 0.98 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-primary px-8 text-hover-effect">
+              <motion.h3 
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-primary px-8 text-hover-effect"
+                whileHover={{
+                  textShadow: `0 0 20px var(--glow-color, rgba(255,255,255,0.5))`,
+                  transition: { duration: 0.3 }
+                }}
+              >
                 {item.name}
-              </h3>
+              </motion.h3>
             </motion.div>
           ))}
         </div>

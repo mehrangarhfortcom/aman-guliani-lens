@@ -17,6 +17,10 @@ export const IntroSection = ({ onMouseEnter, onMouseLeave }: IntroSectionProps) 
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        whileHover={{
+          scale: 1.02,
+          transition: { duration: 0.3 }
+        }}
       >
         AMAN GULIANI
       </motion.h1>

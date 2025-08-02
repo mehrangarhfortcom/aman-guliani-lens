@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman Guliani - Photography</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0A0A0A;
+            --text: #EAEAEA;
+            --accent: #FFFFFF;
+            --footer-bg: #111111;
+            --muted: #888888;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            cursor: none;
+        }
+        
+        h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 800; }
+        
+        .cursor {
+            position: fixed; width: 24px; height: 24px;
+            background: var(--accent); border-radius: 50%;
+            pointer-events: none; z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+        
+        .cursor.text-hover {
+            opacity: 0.2; transform: scale(1.5);
+        }
+        
+        .spotlight-overlay {
+            position: fixed; inset: 0; pointer-events: none;
+            z-index: 50; opacity: 0; transition: opacity 0.3s;
+            background: radial-gradient(circle 120px at 50% 50%, 
+                       transparent 0%, transparent 120px, rgba(0,0,0,0.95) 240px);
+        }
+        
+        .spotlight-overlay.active { opacity: 1; }
+        
+        header {
+            position: fixed; top: 0; width: 100%;
+            padding: 1rem 4rem; z-index: 1000;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(16,16,16,0.5); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        .logo { font-family: 'Syne'; font-weight: 800; font-size: 1.5rem; }
+        
+        nav a {
+            margin-left: 2.5rem; font-size: 0.9rem; font-weight: 500;
+            color: var(--text); text-decoration: none; transition: color 0.3s;
+        }
+        
+        nav a:hover { color: #f59e0b; }
+        
+        .intro {
+            height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            position: relative;
+        }
+        
+        .intro h1 {
+            font-size: clamp(3rem, 10vw, 8rem); margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .intro h1:hover {
+            background: linear-gradient(45deg, #7dd3fc, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transform: scale(1.02);
+        }
+        
+        .intro p { color: var(--muted); margin-top: 1rem; letter-spacing: 0.2em; }
+        
+        .scroll-hint {
+            position: absolute; bottom: 3rem; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+        }
+        
+        .gallery-section { height: 400vh; position: relative; }
+        
+        .gallery-container {
+            position: sticky; top: 80px; height: calc(100vh - 80px);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        
+        .gallery {
+            display: flex; gap: 4vw; align-items: center;
+            transition: transform 0.1s ease-out;
+        }
+        
+        .gallery-item {
+            flex: 0 0 35vw; max-width: 500px; height: 80vh;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 1rem; display: flex; align-items: center;
+            justify-content: center; transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 0 45px -10px var(--glow);
+        }
+        
+        .gallery-item h3 {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: var(--accent); text-align: center; padding: 0 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover h3 {
+            text-shadow: 0 0 20px var(--glow);
+        }
+        
+        .footer {
+            background: var(--footer-bg); padding: 6rem 2rem; text-align: center;
+        }
+        
+        .footer h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        
+        .footer p { color: var(--muted); margin-bottom: 2rem; }
+        
+        .footer a {
+            color: var(--accent); text-decoration: none; font-size: 1.25rem;
+            transition: color 0.3s; display: inline-block; margin-bottom: 3rem;
+        }
+        
+        .footer a:hover { color: #10b981; }
+        
+        .text-hover { transition: all 0.3s ease; }
+        
+        .text-hover:hover { opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="spotlight-overlay"></div>
+    
+    <header>
+        <div class="logo">AG</div>
+        <nav>
+            <a href="#" class="text-hover">Work</a>
+            <a href="#" class="text-hover">About</a>
+            <a href="#" class="text-hover">Contact</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="intro">
+            <h1 class="text-hover">AMAN GULIANI</h1>
+            <p class="text-hover">PHOTOGRAPHY</p>
+            <div class="scroll-hint text-hover">Scroll to Explore</div>
+        </section>
+        
+        <div class="gallery-section">
+            <div class="gallery-container">
+                <div class="gallery">
+                    <div class="gallery-item" style="--glow: #ef4444;">
+                        <h3>Landscapes</h3>
+                    </div>
+                    <div class="gallery-item" style="--glow: #3b82f6;">
+                        <h3>Architecture</h3>
+                    </div>
+                    <div class="gallery-item" style="--glow: #10b981;">
+                        <h3>Portraits</h3>
+                    </div>
+                    <div class="gallery-item" style="--glow: #f59e0b;">
+                        <h3>Street</h3>
+                    </div>
+                    <div class="gallery-item" style="--glow: #6b7280;">
+                        <h3>Abstract</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <h2>Let's Connect</h2>
+            <p>Have a project in mind or just want to say hello?</p>
+            <a href="mailto:hello@amanguliani.com" class="text-hover">hello@amanguliani.com</a>
+            <p style="font-size: 0.875rem;">&copy; 2025 Aman Guliani. All Rights Reserved.</p>
+        </footer>
+    </main>
+    
+    <script>
+        const cursor = document.querySelector('.cursor');
+        const spotlight = document.querySelector('.spotlight-overlay');
+        const intro = document.querySelector('.intro');
+        const gallery = document.querySelector('.gallery');
+        const gallerySection = document.querySelector('.gallery-section');
+        
+        let mouseX = 0, mouseY = 0;
+        let isTextHover = false;
+        
+        // Mouse movement
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.left = mouseX - 12 + 'px';
+            cursor.style.top = mouseY - 12 + 'px';
+            
+            spotlight.style.background = `radial-gradient(circle 120px at ${mouseX}px ${mouseY}px, 
+                transparent 0%, transparent 120px, rgba(0,0,0,0.95) 240px)`;
+            
+            // Check for text hover
+            const target = e.target;
+            const isText = target.matches('h1, h2, h3, p, a, span, .text-hover') || 
+                          target.closest('.text-hover');
+            
+            if (isText !== isTextHover) {
+                isTextHover = isText;
+                cursor.classList.toggle('text-hover', isTextHover);
+            }
+        });
+        
+        // Spotlight effect
+        intro.addEventListener('mouseenter', () => {
+            spotlight.classList.add('active');
+        });
+        
+        intro.addEventListener('mouseleave', () => {
+            spotlight.classList.remove('active');
+        });
+        
+        // Horizontal scroll effect
+        let ticking = false;
+        
+        function updateGallery() {
+            const rect = gallerySection.getBoundingClientRect();
+            const progress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
+            const maxScroll = gallery.scrollWidth - window.innerWidth;
+            
+            gallery.style.transform = `translateX(${-progress * maxScroll}px)`;
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateGallery);
+                ticking = true;
+            }
+        });
+        
+        // Fade spotlight on scroll
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const opacity = Math.max(0, 1 - (scrollY / window.innerHeight) * 2);
+            spotlight.style.opacity = opacity;
+        });
+    </script>
+</body>
+</html>
